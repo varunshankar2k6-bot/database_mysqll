@@ -1,0 +1,45 @@
+Create database library_db;
+Use library_db;
+ create table author(
+author_id int primary key,
+author_name varchar(50) not null
+);
+create table books(
+book_id int primary key,
+title varchar(50) not null,
+author_id int,
+foreign key(author_id) references author(author_id)
+);
+create table members(
+member_id int primary key,
+member_name varchar(50),
+email varchar(50),
+join_date date
+);
+create table issue_book(
+issue_id int primary key,
+member_id int,
+book_id int,
+issue_date date,
+return_date date,
+foreign key(member_id) references members(member_id),
+foreign key(book_id) references books(book_id)
+);
+insert into author(author_id,author_name) values (1,'Varun'),(2,'Rohan'),(3,'Jack'),(4,'Jill'),(5,'Jim')
+insert into books(book_id,title,author_id,price,available_copies) values (3,'Java',1,1000,7),(4,'Python',2,2340,2),(5,'Maths',3,650,12),(6,'English',4,759,20),(7,'Biology',5,1250,5)
+insert into members(member_id,member_name,email,join_date) values (7,'Vv','vv@gmail','2026-07-27'),(8,'Ss','Ss@gmail','2026-07-27'),(9,'Kk','Kk@gmail','2026-03-27'),(10,'Aa','Aa@gmail','2026-02-27'),(11,'Bb','Bb@gmail','2026-01-27')
+insert into issue_book(issue_id,member_id,book_id,issue_date,return_date) values (10,7,3,'2028-01-21','2028-3-01'),(19,8,4,'2028-02-21','2028-4-01'),(1,9,5,'2028-03-21','2028-5-01'),(13,10,6,'2028-04-21','2028-6-01'),(6,11,7,'2028-05-21','2028-7-01')
+select * from books where price>500;
+select * from members where join_date>'2026-03-20';
+update books set price=150,available_copies=25 where title='Java';
+alter table members add mobile_number int;
+UPDATE members SET mobile_number = 1234 WHERE member_id = 7;
+UPDATE members SET mobile_number = 2345 WHERE member_id = 8;
+UPDATE members SET mobile_number = 3456 WHERE member_id = 9;
+UPDATE members SET mobile_number = 4567 WHERE member_id = 10;
+UPDATE members SET mobile_number = 5678 WHERE member_id = 11;
+SELECT * FROM books WHERE price > (SELECT AVG(price) FROM books);
+SELECT members.* FROM members LEFT JOIN issue_book ON members.member_id = issue_book.member_id WHERE issue_book.member_id IS NULL;
+
+
+
