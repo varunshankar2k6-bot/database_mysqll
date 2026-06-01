@@ -47,14 +47,14 @@ else:
 
 
 #Question 6        
-num = int(input("Enter a number: "))
-if num >= 0:
-    if num == 0:
-        print("Zero")
-    else:
+n = int(input("Enter a number: "))
+match n:
+    case _ if n > 0:
         print("Positive")
-else:
-    print("Negative")
+    case _ if n < 0:
+        print("Negative")
+    case _:
+        print("Zero")
 
 #Question 7
 order=input("Enter order: ")

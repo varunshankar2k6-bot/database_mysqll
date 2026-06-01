@@ -1,13 +1,5 @@
-name=input("enter name  ")
-age=int(input("enter age    "))
-course=input("enter course  ")
-marks=float(input("enter marks out of 100   "))
-print("-----Student Details-----")
-print("Name: ",name)
-print("Age: ",age)
-print("Course: ",course)
-print("Marks: ",marks)
-if marks>=40:
-    print("Pass")
-else:
-    print("Fail")
+ip = input("Enter a sentence: ")
+print("Uppercase:", ip.upper())
+print("Lowercase:", ip.lower())
+print("Title Case:", ip.title())
+print("Swapcase:", ip.swapcase())
