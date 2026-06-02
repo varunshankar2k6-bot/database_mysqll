@@ -1,20 +1,25 @@
-memberset1=set()
-memberset2=set()
-#Question 1
-#Adding elements to set1
-memberset1.add("V")
-memberset1.update("A","B","Z")
-#Question 2
-print(memberset1)
-#Question 3 Removing elements
-memberset1.remove("A")
-print(memberset1)
-#Adding elements to set2
-memberset2.update("Z","Y","V","X")
-print(memberset2)
-#Question 4 finding common elements between two sets
-memberset3=memberset1.intersection(memberset2)
-print("Common members ", memberset3)
-#Question 5 Finding union of two sets
-m3=memberset1.union(memberset2)
-print("Merge libraries is: ", m3)
+#Initializing quiz questions with answers
+quiz = {
+    "What language is used for websites?": {
+        "A": "Python",
+        "B": "JavaScript",
+        "C": "Java",
+        "D": "C++",
+        "answer": "B"
+    },
+    "Which language is used for Python programming?": {
+        "A": "Python",
+        "B": "Java",
+        "C": "C++",
+        "D": "HTML",
+        "answer": "A"
+    },
+    "How many bits are there in a byte?": {
+        "A": "4",
+        "B": "16",
+        "C": "8",
+        "D": "32",
+        "answer": "C"
+    }
+}
+print(quiz.items())
