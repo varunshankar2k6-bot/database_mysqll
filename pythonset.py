@@ -15,6 +15,6 @@ print(memberset2)
 #Question 4 finding common elements between two sets
 memberset3=memberset1.intersection(memberset2)
 print("Common members ", memberset3)
-#Question 5 Finding common elements between two sets
+#Question 5 Finding union of two sets
 m3=memberset1.union(memberset2)
 print("Merge libraries is: ", m3)
