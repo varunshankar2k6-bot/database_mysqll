@@ -1,3 +1,4 @@
+#Initializing quiz questions with answers
 quiz = {
     "What language is used for websites?": {
         "A": "Python",
@@ -22,14 +23,15 @@ quiz = {
     }
 }
 score = 0
+#For loop to get elements in quiz
 for question,option in quiz.items():
     print(question)
-    print("A.", option["A"])
-    print("B.", option["B"])
-    print("C.", option["C"])
-    print("D.", option["D"])
-    print("S. Skip Question")
-    print("Q. Quit Quiz")
+    print("A", option["A"])
+    print("B", option["B"])
+    print("C", option["C"])
+    print("D", option["D"])
+    print("S Skip Question")
+    print("Q Quit Quiz")
     choice = input("Enter your choice: ").upper()
 
     if choice == "Q":
