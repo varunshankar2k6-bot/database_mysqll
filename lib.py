@@ -1,44 +1,81 @@
-#Defining class Book,Member and Library
-class Book:
-    def __init__(self, title):
+class Item:
+    def display(self):
+        pass
+class Book(Item):
+    def __init__(self, book_id, title, author, year, copies):
+        self.book_id = book_id
         self.title = title
-class Member:
-    def __init__(self, name):
+        self._author = author      # Protected variable
+        self.year = year
+        self.__copies = copies     # Private variable
+    def display(self):
+        print("Book ID:", self.book_id)
+        print("Title:", self.title)
+        print("Author:", self._author)
+        print("Year:", self.year)
+        print("Copies:", self.__copies)
+    def get_copies(self):
+        return self.__copies
+class Member(Item):
+    def __init__(self, member_id, name):
+        self.__member_id = member_id    # Private variable
         self.name = name
+    def display(self):
+        print("Member ID:", self.__member_id)
+        print("Name:", self.name)
+    def get_member_id(self):
+        return self.__member_id
 class Library:
+    # Static Variable
+    library_name = "British Library"
     def __init__(self):
         self.books = []
         self.members = []
-#Defining all the methods in the menu
     def add_book(self):
-        title = input("Enter book title: ")
-        book = Book(title)
+        book_id = input("Enter Book ID: ")
+        for book in self.books:
+            if book.book_id == book_id:
+                print("Book ID already exists")
+                return
+        title = input("Enter Title: ")
+        author = input("Enter Author: ")
+        year = int(input("Enter Year: "))
+        copies = int(input("Enter Copies: "))
+        book = Book(book_id, title, author, year, copies)
         self.books.append(book)
-        print("Book added")
+        print("Book Added")
     def register_member(self):
-        name = input("Enter member name: ")
-        member = Member(name)
-        self.members.append(member)
-        print("Member registered")
-    def search_book(self):
-        title = input("Enter book title to search: ")
-        for book in self.books:
-            if book.title == title:
-                print("Book found")
-            else:
-                print("Book not found")
-    def display_books(self):
-        print("Books:")
-        for book in self.books:
-            print(book.title)
-    def display_members(self):
-        print("Members:")
+        member_id = input("Enter Member ID: ")
         for member in self.members:
-            print(member.name)
-
-#Creating library object
+            if member.get_member_id() == member_id:
+                print("Member ID already exists")
+                return
+        name = input("Enter Member Name: ")
+        member = Member(member_id, name)
+        self.members.append(member)
+        print("Member Registered")
+    def search_book(self):
+        book_id = input("Enter Book ID to Search: ")
+        for book in self.books:
+            if book.book_id == book_id:
+                print("Book Found")
+                book.display()
+                return
+        print("Book Not Found")
+    def display_books(self):
+        if len(self.books) == 0:
+            print("No Books Available")
+        else:
+            for book in self.books:
+                book.display()
+    def display_members(self):
+        if len(self.members) == 0:
+            print("No Members Registered")
+        else:
+            for member in self.members:
+                member.display()
 library = Library()
-#Infinite loop for menu till user exits
+print("Library Name:", Library.library_name)
 while True:
     print("1. Add Book")
     print("2. Register Member")
@@ -46,7 +83,7 @@ while True:
     print("4. Display Books")
     print("5. Display Members")
     print("6. Exit")
-    choice = int(input("Enter choice: "))
+    choice = int(input("Enter Choice: "))
     if choice == 1:
         library.add_book()
     elif choice == 2:
