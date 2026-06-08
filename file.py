@@ -1,0 +1,6 @@
+source = open(r"C:\Users\source.txt", "r")
+data = source.read()
+source.close()
+destination = open("destination.txt", "w")
+destination.write(data)
+destination.close()
